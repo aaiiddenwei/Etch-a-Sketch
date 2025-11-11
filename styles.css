@@ -1,0 +1,35 @@
+body {
+    text-align: center;
+}
+
+button {
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: burlywood;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 960px;
+    height: 960px;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+.grid-row {
+    display: flex;
+    flex: 1;
+}
+
+.square {
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.burlywood-background {
+    background-color: burlywood;
+}
