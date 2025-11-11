@@ -19,7 +19,7 @@ function createNewGrid(sidePixels) {
             const squareEl = document.createElement("div")
             squareEl.classList.add("square")
             rowEl.appendChild(squareEl)
-            squareEl.addEventListener("mouseenter", (e) => e.target.classList.add("burlywood-background"))
+            squareEl.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = getRandomRGBColorString())
         }
     }
 }
@@ -32,4 +32,8 @@ function getSideSquares() {
     } else {
         return promptedSideSquares
     }
+}
+
+function getRandomRGBColorString() {
+    return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
 }
