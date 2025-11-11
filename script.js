@@ -1,6 +1,7 @@
 const containerEl = document.querySelector("#container")
 const newGridBtn = document.querySelector("#new-grid-btn")
 let sideSquares = 16
+let opacity = 0.1
 
 newGridBtn.addEventListener("click", () => {
     sideSquares = getSideSquares()
@@ -11,6 +12,7 @@ createNewGrid(sideSquares)
 
 function createNewGrid(sidePixels) {
     containerEl.replaceChildren()
+    opacity = 0.1
     for (let i = 0; i < sidePixels; i++) {
         const rowEl = document.createElement("div")
         rowEl.classList.add("grid-row")
@@ -19,7 +21,13 @@ function createNewGrid(sidePixels) {
             const squareEl = document.createElement("div")
             squareEl.classList.add("square")
             rowEl.appendChild(squareEl)
-            squareEl.addEventListener("mouseenter", (e) => e.target.style.backgroundColor = getRandomRGBColorString())
+            squareEl.addEventListener("mouseenter", (e) => {
+                e.target.style.backgroundColor = getRandomRGBColorString()
+                e.target.style.opacity = opacity
+                if (opacity < 1) {
+                    opacity += 0.1
+                }
+            })
         }
     }
 }
@@ -36,4 +44,12 @@ function getSideSquares() {
 
 function getRandomRGBColorString() {
     return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+}
+
+function setBackground(e) {
+    e.target.style.backgroundColor = getRandomRGBColorString()
+    e.target.style.opacity = opacity
+    if (opacity < 1) {
+        opacity += 0.1
+    }
 }
